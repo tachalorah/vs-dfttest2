@@ -339,7 +339,11 @@ def DFTTest2(
             sigma_array = [s * wscale for s in sigma_array]
         sigma2 *= wscale
 
-    pmin *= wscale
+    if filter_type == 5:
+        pmin = f0beta      # unscaled
+    else:
+        pmin *= wscale
+
     pmax *= wscale
 
     if isinstance(backend, Backend.cuFFT):
